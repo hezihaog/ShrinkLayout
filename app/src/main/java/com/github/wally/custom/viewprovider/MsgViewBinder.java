@@ -22,8 +22,6 @@ import me.drakeet.multitype.ItemViewBinder;
  * Email: hezihao@linghit.com
  */
 public class MsgViewBinder extends ItemViewBinder<Msg, MsgViewBinder.ViewHolder> {
-    private boolean isOpen = true;
-
     @NonNull
     @Override
     protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
@@ -39,9 +37,17 @@ public class MsgViewBinder extends ItemViewBinder<Msg, MsgViewBinder.ViewHolder>
         holder.mBtnLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Object tag = holder.itemView.getTag(R.id.item_is_open);
+                boolean isOpen;
+                if (tag != null) {
+                    isOpen = (boolean) tag;
+                } else {
+                    //默认为开
+                    isOpen = true;
+                }
                 if (isOpen) {
                     //打开状态，压缩
-                    int originHeight = holder.mShrinkLayout.getOrginHeight();
+                    int originHeight = holder.mShrinkLayout.getOriginHeight();
                     View itemView = LayoutInflater.from(holder.itemView.getContext()).inflate(R.layout.item_msg, null);
                     int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
                     int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
@@ -54,6 +60,7 @@ public class MsgViewBinder extends ItemViewBinder<Msg, MsgViewBinder.ViewHolder>
                 }
                 //切换状态标志
                 isOpen = !isOpen;
+                holder.itemView.setTag(R.id.item_is_open, isOpen);
             }
         });
     }

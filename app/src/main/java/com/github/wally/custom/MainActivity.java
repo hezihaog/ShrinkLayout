@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         //设置数据
         ArrayList<Msg> datas = getData();
         adapter.setItems(datas);
+        adapter.notifyDataSetChanged();
     }
 
     private ArrayList<Msg> getData() {

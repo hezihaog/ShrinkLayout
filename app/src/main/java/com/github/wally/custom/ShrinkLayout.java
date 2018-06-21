@@ -18,7 +18,6 @@ import android.widget.FrameLayout;
  * Email: hezihao@linghit.com
  */
 public class ShrinkLayout extends FrameLayout {
-    private int mOriginViewWidth;
     private int mOriginViewHeight;
     //标志判断是否已经获取到了原始高度
     private boolean isGetOriginParams = false;
@@ -44,9 +43,8 @@ public class ShrinkLayout extends FrameLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        //因为每次改变高度，这里都会回调，所以只获取最开始的高度宽度参数
+        //因为每次改变高度，这里都会回调，所以只获取最开始的高度参数
         if (!isGetOriginParams) {
-            this.mOriginViewWidth = w;
             this.mOriginViewHeight = h;
             this.isGetOriginParams = true;
         }
@@ -72,7 +70,7 @@ public class ShrinkLayout extends FrameLayout {
     /**
      * 获取布局一开始的高度
      */
-    public int getOrginHeight() {
+    public int getOriginHeight() {
         return mOriginViewHeight;
     }
 
