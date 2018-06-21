@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.register(Msg.class, new MsgViewBinder());
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));
+        //关闭rv的一级缓存，让每次更新item都调用holder的onBindView
+        recyclerView.setItemViewCacheSize(0);
         //设置数据
         ArrayList<Msg> datas = getData();
         adapter.setItems(datas);
