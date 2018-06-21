@@ -78,7 +78,7 @@ public class ShrinkLayout extends FrameLayout {
 
     private void ChangeHeight(int originHeight, int targetHeight) {
         ValueAnimator animator = ValueAnimator.ofInt(originHeight, targetHeight);
-        animator.setDuration(550);
+        animator.setDuration(450);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
