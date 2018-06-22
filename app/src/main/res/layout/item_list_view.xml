@@ -28,21 +28,22 @@
             android:background="#99909090">
 
             <LinearLayout
+                android:id="@+id/parent_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#66FF0000"
                 android:orientation="vertical">
 
                 <include
-                    android:id="@+id/msg_one"
+                    android:id="@+id/msg_one_layout"
                     layout="@layout/item_msg" />
 
                 <include
-                    android:id="@+id/msg_two"
+                    android:id="@+id/msg_two_layout"
                     layout="@layout/item_msg" />
 
                 <include
-                    android:id="@+id/msg_third"
+                    android:id="@+id/msg_third_layout"
                     layout="@layout/item_msg" />
             </LinearLayout>
         </com.github.wally.custom.ShrinkLayout>
